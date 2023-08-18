@@ -35,6 +35,21 @@ Rails.application.routes.draw do
     end
     
     resources :addresses, except: [:new, :show]
+      
+  end
+  
+  namespace :admin do
+    get '/' => 'homes#top'
+    
+    resources :items, except: [:destroy]
+    
+    resources :genres, except: [:destroy, :show, :new]
+    
+    resources :customers, except: [:destroy, :create, :new]
+    
+    resources :orders, only: [:show, :update] do
+      resources :order_items, only: [:update]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
