@@ -12,12 +12,12 @@
           </tr>
         </thread>
         <tbody>
-          <%= @order_items.each do |order_item| %>
+          <%= @cart_items.each do |cart_item| %>
             <tr>
-              <th><%= order_item.item.get_item_image(80, 80) %><%= order_item.item.name %></th>
-              <th><%= order_item.price %></th>
-              <th><%= order_item.quantity %></th>
-              <th><%= order_item.price * order_item.quantity %></th>
+              <th><%= cart_item.item.get_item_image(80, 80) %><%= cart_item.item.name %></th>
+              <th><%= cart_item.item.price %></th>
+              <th><%= cart_item.quantity %></th>
+              <th><%= cart_item.itemprice * cart_item.quantity %></th>
             </tr>
           <% end %>
         </tbody>
