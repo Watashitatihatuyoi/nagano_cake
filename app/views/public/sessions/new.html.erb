@@ -1,32 +1,66 @@
+<br>
+<br>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span style="background-color:#DCDCDC">　ログイン　</span><br>
+      </div>
+    </div>
+<br>
 
-  <span style="background-color:#DCDCDC">　ログイン　</span><br>
-    
-
-
-  <span style="background-color:#DCDCDC">　会員の方はこちらからログイン　</span>
-    
-
-  <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+  <div class="row">
+    <div class="col">
+      <span style="background-color:#DCDCDC">　会員の方はこちらからログイン　</span>
+    </div>
+  </div>
+<br>
+  <%= form_with model: resource, scope: resource_name, url: session_path(resource_name) do |f| %>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :メールアドレス %>
+    </div>
+    <div class="col-md-8 mb-3">
+      <div class="field">
+        <%= f.email_field :email, size: "50", placeholder: "sample@example.com" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :encrypted_password, autocomplete: "current-password" %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :パスワード %>
+    </div>
+    <div class="col-md-8 mb-3">
+      <div class="field">
+        <%= f.password_field :password, size: "50" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4"></div>
+      <div class="col-md-8 mb-3">
+        <%= f.submit "ログイン", class: "btn btn-info" %>
+      </div>
   </div>
 
-     <%= link_to 'ログイン',root_path, class: "btn btn-success" %>
+  <% end %>
+  
+<br>
 
-<% end %>
-
-
+  <div class="row">
+    <div class="col">
       <span style="background-color:#DCDCDC">　会員登録がお済みでない方　</span><br>
-    
+    </div>
+  </div>
+  
+<br>
 
-<%= render "public/shared/links" %>から新規登録を行ってください。
+  <%= render "public/shared/links" %>から新規登録を行ってください。
 
+  </div>
+<br>
 
 
 

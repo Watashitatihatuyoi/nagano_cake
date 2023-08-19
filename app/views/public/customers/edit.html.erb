@@ -1,0 +1,85 @@
+<h3>会員情報編集</h3>
+
+<%= form_with model: @customer, url: new_customer_registration_path do |f| %>
+  
+  
+  <div class="row">
+    <div class="col-md-4">
+      <p>名前</p>
+    </div>
+    <div class="col-md-8">
+      <div class="field">
+        <%= f.label :last_name, "(姓)" %>
+        <%= f.text_field :last_name %>
+
+        <%= f.label :first_name, "(名)" %>
+        <%=f.text_field :first_name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>フリガナ</p>
+    </div>
+    <div class="col-md-8">
+      <div class="field">
+        <%= f.label :last_name_kn, "(セイ)" %>
+        <%= f.text_field :last_name_kana %>
+
+        <%= f.label :first_name_kn, "(メイ)" %>
+        <%= f.text_field :first_name_kana %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :post_code, "郵便番号" %>
+    </div>
+    <div class="col-md-8 mb-3">
+      <div class="field">
+        <%= f.text_field :post_code %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :address, "住所" %>
+    </div>
+    <div class="col-md-8 mb-3">
+      <div class="field">
+        <%= f.text_field :address %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :phone_number, "電話番号" %>
+    </div>
+    <div class="col-md-8 mb-3">
+      <div class="field">
+        <%= f.text_field :phone_number %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.label :email, "メールアドレス" %>
+    </div>
+    <div class="col-md-8 mb-3">
+      <div class="field">
+        <%= f.email_field :email %>
+      </div>
+    </div>
+  </div>
+  
+  <% end %>
+  
+  
+  <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+  
+  <%= link_to "退会する", confirm_withdraw_customers_path, class: "btn btn-danger" %>
