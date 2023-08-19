@@ -1,14 +1,23 @@
-<div class="container">
+<div class="contener px-5">
   <div class="row">
-    <img src="images/top_image.jpg">
-    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-      <div class="border border-dark">
-        <div class="text-center">
-          <p>ようこそ、ながのCAKEへ!</p>
-          <P>このサイトは、ケーキ販売のECサイトになります。</P>
-          <p>会員でない方も商品の閲覧はできますが、</p>
-          <p>購入には会員登録が必要になります。</p>
+    <div class="mx-auto">
+      <div class="card">
+        <%= image_tag 'top_image.jpg', :size => '700x400', class:'card-img'%>
+        <div class="card-img-overlay d-flex">
+          <div class="m-auto">
+            <div class="border border-dark bg-white bg-opacity-10" style="padding:10px">
+              <p class="text-center">ようこそ、ながのCAKEへ！</p>
+              <p class="text-center">このサイトは、ケーキ販売のECサイトになります.</p>
+              <p class="text-center">会員でない方も商品の閲覧はできますが、</p>
+              <p class="text-center">購入には会員登録が必要になります。</p>
+            </div>
+          </div>
         </div>
+      </div>
+      <h1>新着商品</h1>
+      
+      <div class="text-right">
+        <%= link_to 'すべての商品を見る', items_path %>
       </div>
     </div>
   </div>
