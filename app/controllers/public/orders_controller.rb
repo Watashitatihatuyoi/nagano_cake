@@ -21,13 +21,14 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
   end 
   
+  def create
+    
+  end 
+  
   def complete
     
   end 
   
-  def create
-    
-  end 
   
   def index
     
