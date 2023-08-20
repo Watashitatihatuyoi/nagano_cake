@@ -16,12 +16,10 @@
           <tbody>
             <% @order.each do |order| %>
               <tr>
-                <td>
-                  <p><%= order.created_at %></p>
-                  <p><%= order.customer.name %></p>
-                  <p><%= order.order_items.sam(:qantity) %></p>
-                  <p><%= order.status %></p>
-                </td>
+                <td><%= order.created_at %></td>
+                <td><%= order.customer.name %></td>
+                <td><%= order.order_items.sam(:qantity) %></td>
+                <td><%= order.status %></td>
               </tr>
             <% end %>
           </tbody>
