@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   
   def show
     @order = Order.find(params[:id])
@@ -10,7 +11,7 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       redirect_to request.referer
     else
-      @order_items = @order.order_items
+      @order_items = @order.order_items.all
       render :show
     end
   end
