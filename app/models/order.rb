@@ -10,4 +10,8 @@ class Order < ApplicationRecord
     '〒' + self.postal_code + ' ' + self.address 
   end
   
+  def order_price
+    self.postage + self.total_price
+  end
+  
 end

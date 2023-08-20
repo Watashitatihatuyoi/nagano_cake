@@ -24,7 +24,7 @@
             <th><strong>注文ステータス</strong></th>
             <th>
               <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-                <%= f.select :status, [['入金待ち', 0 ], ['入金確認', 1 ], ['制作中', 2 ], ['発送準備中', 3 ], ['発送済み', 4 ]] %>
+                <%= f.collection_select :status, Order.statuses.keys, :status, Order.statuses_i18n, {selected: @order.status}%>
                 <%= f.submit '更新', class:'btn btn-success' %>
               <% end %>
             </th>
@@ -54,7 +54,8 @@
               <th><%= order_item.price * order_item.quantity %></th>
               <th>
                 <%= form_with model: order_item, url: admin_order_order_item_path do |f| %>
-                  <%= f.select :making_status, %>
+                  <%= f.collection_select :making_status, OrderItem.making_statuses.keys, :making_status, OrderItem.making_statuses_i18n, {selected: order_item.making_status}%>
+                  <%= f.submit '更新', class:'btn btn-success' %>
                 <% end %>
               </th>
             </tr>
@@ -62,6 +63,10 @@
         </tbody>
       </table>
     </div>
-    <div class="col-sm-12 col-md-4 col-lg-4 px-sm-0"></div>
+    <div class="col-sm-12 col-md-4 col-lg-4 px-sm-0">
+      <strong>商品合計　</strong><%= @order.total_price.to_s + '円' %>
+      <strong>送料　</strong><%= @order.postage.to_s + '円' %>
+      <strong>請求金額合計　<%= @order.order_price.to_s %>円</strong>
+    </div>
   </div>
 </div>

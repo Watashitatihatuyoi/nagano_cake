@@ -1,9 +1,9 @@
 class Public::OrdersController < ApplicationController
-  
+
   def new
     @order = Order.new
-  end 
-  
+  end
+
   def confirm
     @order = Order.new(order_params)
     if params[:order][:address_select] == 'own_address'
@@ -19,8 +19,8 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
     end
     @cart_items = current_customer.cart_items.all
-  end 
-  
+  end
+
   def create
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
@@ -44,26 +44,26 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       render :new
     end
-  end 
-  
+  end
+
   def complete
-    
-  end 
-  
-  
+
+  end
+
+
   def index
     @orders = current_customer.orders.all.order(id: 'DESC')
-  end 
-  
+  end
+
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items.all
   end
-  
+
   private
-  
+
   def order_params
     params.require[:order].permit[:payment_method, :post_code, :address, :name]
   end
-  
+
 end
