@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
       
       <!-- ジャンル検索　部分テンプレート化 -->
       <table class="table">
@@ -19,23 +19,31 @@
         </tbody>
         
       </table>
+    </div>
       
-      <div class="col-md-10">
-        <div class="item_index">
-          <h2>商品一覧（全<%= @total_items %>件）</h2>
-        </div>
-        <div class="row">
-          <% @items.each do |item| %>
-          <div class="one-item">
-            <%= link_to item_path(item) do %>
-            <p><%= image_tag item.item_image, format: "jpeg", size: "300x200" %></p>
-            <% end %>
-            <p><%= item.name %></p>
-            <p>¥<%= item.with_tax_price.to_s(:delimited) %></p>
-          </div>
-          <% end %>
+      <div class="Floater">
+        <div class="innerWrap">
+          <nav class="SelectBtn ThradBtn">
+            <ul>
+              <% @items.each do |item| %>
+              <li>
+                <div class="FigureArea">
+                  <figure class="attachment-page-thumbnails">
+                    <%= link_to item_path(item) do %>
+                    <p><%= image_tag item.item_image, format: "jpg",size: "400x250" %></p>
+                    <% end %>
+                  </figure>
+                </div>
+                <div class="citeArea">
+                  <cite class="min">
+                    <span><%= item.name %></span>
+                  </cite>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </nav>
         </div>
       </div>
-    </div>
   </div>
 </div>
