@@ -1,7 +1,8 @@
 class Public::HomesController < ApplicationController
   
   def top
-    @items = Item.order(created_at: :desc).limit(4)
+    @items = Item.all
+    @new_items = Item.first(4)
   end
   
   def about
