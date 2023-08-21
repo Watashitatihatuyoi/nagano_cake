@@ -2,6 +2,7 @@ class Public::CartItemsController < ApplicationController
   
   def index
     @cart_items = current_customer.cart_items.all
+    @items = Items.all
   end 
   
   def update
@@ -14,11 +15,14 @@ class Public::CartItemsController < ApplicationController
   end 
   
   def destroy
-    
+    @item = Item.fimnd(params[:id])
+    @item.destroy
+    redirect_to cart_items_path, notice: "削除されました。"
   end 
   
-  def destroy_all
-    
+  def destroy_all_records
+    Items.destroy_all
+    redirect_to cart_items_path, notice: "全てのカート内商品が削除されました。"
   end
   
   def create
