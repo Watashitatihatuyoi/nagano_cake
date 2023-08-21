@@ -1,24 +1,28 @@
 class Public::AddressesController < ApplicationController
-  
+
   def index
-    
-  end 
-  
+    @address = Address.new
+    @addresses = current_customer.addresses
+  end
+
   def edit
-    
-  end 
-  
+
+  end
+
   def create
-    
-  end 
-  
+
+  end
+
   def update
-    
-  end 
-  
+
+  end
+
   def destroy
-    
-  end 
-  
-  
+
+  end
+
+  def address_params
+  params.require(:address).permit(:name, :post_code, :address)
+  end
+
 end
