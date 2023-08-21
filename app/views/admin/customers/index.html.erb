@@ -3,14 +3,15 @@
     <div class="col-md-10">
 <br>
 <br>
-
+<h3>会員一覧</h3>
+<br>
  <table class="table">
       <thead class="thead-light">
         <tr>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
+          <th style="height: 50px">会員ID</th>
+          <th style="height: 50px">氏名</th>
+          <th style="height: 50px">メールアドレス</th>
+          <th style="height: 50px">ステータス</th>
         </tr>
       </thead>
 
@@ -18,13 +19,18 @@
 
     <tbody>
       <tr>
-        <td><%= customer.id %></td>
-        <td><%= link_to admin_customer_path(customer.id) do %>
+        <td style="height: 60px"><%= customer.id %></td>
+        <td style="height: 60px"><%= link_to admin_customer_path(customer.id) do %>
           <%= customer.last_name + customer.first_name %>
           <% end %>
           </td>
-        <td><%= customer.email %></td>
-        <th><%= customer.is_admission %></th>
+        <td style="height: 60px"><%= customer.email %></td>
+        <td style="height: 60px"><% if customer.is_admission == true %>
+              <strong class="text-success">有効</strong>
+            <% elsif customer.is_admission == false %>
+              <strong class="text-secondary">退会</strong>
+            <% end %>
+        </td>
       </tr>
     </tbody>
     <% end %>

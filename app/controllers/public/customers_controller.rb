@@ -15,14 +15,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm_withdraw
+
+  end
+
+  def withdraw
     @customer = current_customer
     @customer.update(is_admission: true)
     reset_session
     redirect_to root_path
-  end
-
-  def withdraw
-
   end
 
   private

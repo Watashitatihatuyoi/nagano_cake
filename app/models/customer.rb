@@ -12,14 +12,12 @@ class Customer < ApplicationRecord
   def own_adress_display
     '〒'+self.postal_code+''+self.address
   end
-  
- def custoner_status
-    if is_admission == true
-      "有効"
-    else
-      "退会"
-    end
+
+
+  def active_for_authentication?
+    super && (is_admission == false)
   end
+
 
 
 
