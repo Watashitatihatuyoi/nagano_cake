@@ -1,7 +1,8 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
       
+      <!-- ジャンル検索　部分テンプレート化 -->
       <table class="table">
         <thead>
           <tr>
@@ -18,22 +19,33 @@
         </tbody>
         
       </table>
+    </div>
       
-    </div>
-    
-    <div id="column" class="column03">
-      <!-- ジャンル・アイテムが未実装のため挙動確認ができず中断　総数、一覧の未実装 -->
-      <h2>商品一覧　（全x件）</h2>
-      <ul>
-        <li><a href=""><img src=""><p>濃厚生チョコケーキ</p><span>500円</span></a></li>
-        <li><a href=""><img src=""><p>いちごショートケーキ</p><span>450円</span></a></li>
-        <li><a href=""><img src=""><p>チョコレートロールケーキ（1本）</p><span>1000円</span></a></li>
-        <li><a href=""><img src=""><p>ニューヨークチーズケーキ</p><span>450円</span></a></li>
-        <li><a href=""><img src=""><p>アソートクッキー（10枚）</p><span>300円</span></a></li>
-        <li><a href=""><img src=""><p>マカロン（3個）</p><span>750円</span></a></li>
-        <li><a href=""><img src=""><p>キャンディ（10個）</p><span>250円</span></a></li>
-        <li><a href=""><img src=""><p>なめらかプリン</p><span>350円</span></a></li>
-      </ul>
-    </div>
+      <div class="Floater">
+        <div class="innerWrap">
+          <h2 class="font-weight-normal mt-3">商品一覧(全<%= @total_items %>件)</h2>
+          <nav class="SelectBtn ThradBtn">
+            <ul>
+              <% @items.each do |item| %>
+              <li>
+                <div class="FigureArea">
+                  <figure class="attachment-page-thumbnails">
+                    <%= link_to item_path(item) do %>
+                    <p class="img"><%= image_tag item.item_image, format: "jpg",size: "400x250" %></p>
+                    <% end %>
+                  </figure>
+                </div>
+                <div class="citeArea">
+                  <cite class="min">
+                    <span><%= item.name %></span>
+                    <span>¥<%= item.with_tax_price.to_s(:delimited) %></span>
+                  </cite>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </div>
   </div>
 </div>

@@ -3,15 +3,13 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
+    get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
+    patch 'customers/withdraw' => 'customers#withdraw'
 
     resources :items, only: [:index, :show]
-
-    resource :customers, only: [:show, :edit, :update] do
-      collection do
-        get 'confirm_withdraw'
-        patch 'withdraw'
-      end
-    end
 
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
