@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
   end 
   
   def destroy
-    @cart_item = CartItem.fimnd(params[:id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path, notice: "削除されました。"
   end 
@@ -38,7 +38,7 @@ class Public::CartItemsController < ApplicationController
   private
   
   def cart_item_params
-    params.require[:cart_item].permit[:item_id, :customer_id, :qantity]
+    params.require[:cart_item].permit[:item_id, :customer_id, :quantity]
   end
   
 end
