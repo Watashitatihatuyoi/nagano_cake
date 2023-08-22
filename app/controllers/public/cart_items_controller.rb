@@ -3,7 +3,6 @@ class Public::CartItemsController < ApplicationController
   def index
     if current_customer
       @cart_items = current_customer.cart_items.all
-      @items = Item.all
     else
       flash[:notice] = "ログインしてください。"
       redirect_to new_customer_registration_path
@@ -31,8 +30,15 @@ class Public::CartItemsController < ApplicationController
   end
   
   def create
-    
+    cart_item = CartItem.new(cart_item_params)
+    cart_item.save
+    redirect_to :index
   end 
   
+  private
+  
+  def cart_item_params
+    params.require[:cart_item].permit[:item_id, :customer_id, :qantity]
+  end
   
 end
