@@ -18,7 +18,7 @@
           <% if @item.is_active == true %>
             <p class="text-success">販売中</p>
             <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-            <%= f.select :qantity, 1..10, prompt: "個数選択" %>
+            <%= f.select :quantity, 1..10, prompt: "個数選択" %>
             <%= f.submit "カートに入れる", class: "btn", style:"background-color: #64CCC5; color: white; mx-3" %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.hidden_field :item_id, :value => @item.id %>
