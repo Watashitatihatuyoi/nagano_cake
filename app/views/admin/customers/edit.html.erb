@@ -91,23 +91,22 @@
     </div>
     <div class="col-md-8 mb-3">
       <div class="field">
-        <%= f.radio_button :is_admission, true %>
-        <%= f.label :is_admission, "有効" %>
         <%= f.radio_button :is_admission, false %>
+        <%= f.label :is_admission, "有効" %>
+        <%= f.radio_button :is_admission, true %>
         <%= f.label :is_admission,"退会" %>
       </div>
     </div>
   </div>
 
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="col-md-8 mb-3">
-  <%= f.submit "変更内容を保存", class: "btn btn-success" %>
-  </div>
-  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-8 mb-3">
+        <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+      </div>
+    </div>
   </div>
   <% end %>
   </div>
   </div>
-  </div>
+</div>
