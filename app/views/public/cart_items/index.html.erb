@@ -26,8 +26,8 @@
                   　<%= f.submit "変更" %>
                   <% end %>
                 </td>
-                <td><%= cart_item.qantity*cart_item.item.price*1.1 %></td>
-                <td><%= link_to "削除する", cart_item_path(@item), method: :delete, data: { canfirm: "消してよろしいですか？" }, class: "btn btn-danger" %></td>
+                <td><%= cart_item.quantity*cart_item.item.price*1.1 %></td>
+                <td><%= link_to "削除する", cart_item_path(@item), method: :delete, data: { confirm: "消してよろしいですか？" }, class: "btn btn-danger" %></td>
               </tr>
             <% end %>
           </tbody>
