@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2023_08_17_091926) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "oder_id", null: false
+    t.integer "order_id", null: false
     t.integer "item_id", null: false
     t.integer "quantity", null: false
     t.integer "price", null: false
@@ -123,9 +123,9 @@ ActiveRecord::Schema.define(version: 2023_08_17_091926) do
     t.string "name", null: false
     t.string "post_code", null: false
     t.string "address", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
