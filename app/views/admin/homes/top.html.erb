@@ -1,0 +1,30 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h2>注文履歴一覧</h2>
+      <div class="mx-auto">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>購入日時</th>
+              <th>購入者</th>
+              <th>注文個数</th>
+              <th>注文ステータス</th>
+              <th colspan="4"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order.each do |order| %>
+              <tr>
+                <td><%= order.created_at %></td>
+                <td><%= order.customer.name %></td>
+                <td><%= order.order_items.sam(:qantity) %></td>
+                <td><%= order.status %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
