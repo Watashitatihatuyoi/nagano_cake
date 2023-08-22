@@ -39,7 +39,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.integer :post_code, null: false
       t.string :address, null: false
       t.integer :phone_number, null: false
-      t.boolean :is_admission, null: false, default: true
+      t.boolean :is_admission, null: false, default: false
 
 
       t.timestamps null: false
