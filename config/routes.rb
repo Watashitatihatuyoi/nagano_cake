@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'genres/show'
   scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
 
     resources :items, only: [:index, :show]
+    
+    resources :genres, only: [:show]
 
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       collection do
