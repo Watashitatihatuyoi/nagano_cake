@@ -1,34 +1,29 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
+      <br>
       <%= render "genre", genre: @genres %>
     </div>
       
-      <div class="Floater">
-        <div class="innerWrap">
-          <h2 class="font-weight-normal mt-3">商品一覧(全<%= @total_items %>件)</h2>
-          <nav class="SelectBtn ThradBtn">
-            <ul>
-              <% @items.each do |item| %>
-              <li>
-                <div class="FigureArea">
-                  <figure class="attachment-page-thumbnails">
-                    <%= link_to item_path(item) do %>
-                    <p class="img"><%= image_tag item.item_image, format: "jpg",size: "400x250" %></p>
-                    <% end %>
-                  </figure>
+      <div class="col-md-8 offset-md-1">
+        <h2>商品一覧（全<%= @total_items %>件）</h2>
+        <div class="row">
+          
+          <% @items.each do |item| %>
+            <div class="col-mx-4 my-4">
+              <div class="card" style="width:22rem">
+                <%= link_to item_path(item) do %>
+                  <p class="img"><%= image_tag item.item_image, format: "jpg", size: "350x250" %></p>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= item.name %></h5>
+                  <p class="card-text">¥<%= item.with_tax_price.to_s(:delimited) %></p>
                 </div>
-                <div class="citeArea">
-                  <cite class="min">
-                    <span><%= item.name %></span>
-                    <span>¥<%= item.with_tax_price.to_s(:delimited) %></span>
-                  </cite>
-                </div>
-              </li>
-              <% end %>
-            </ul>
-          </nav>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-  </div>
+      <%= paginate @items %>
+  </row>
 </div>
