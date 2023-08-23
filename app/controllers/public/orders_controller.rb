@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_select] == 'own_address'
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
-      @order.name = current_customer.full_
+      @order.name = current_customer.full_name
     elsif params[:order][:address_select] == 'registered_address'
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
