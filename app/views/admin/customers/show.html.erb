@@ -1,12 +1,22 @@
+<br>
+<br>
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-12 mx-auto">
+
+
+      <div class="row">
+        <div class="col-md-5">
       <h3><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h3>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
         <table class="table table-borderless">
           <thead>
             <tr>
-              <td style="width: 30%">会員ID</td>
-              <td style="width: 40%"><%= @customer.id %></td>
+              <td style="width: 50%">会員ID</td>
+              <td style="width: 50%"><%= @customer.id %></td>
             </tr>
             <tr>
               <td  style="width: 30%">氏名</td>
@@ -40,13 +50,20 @@
                                        <strong class="text-success">有効</strong>
                                      <% end %></td>
             </tr>
-            <tr>
-              <td style="width: 30%"></td>
-              <td style="width: 40%"><%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %></td>
-            </tr>
-          </thead>
+            </thead>
         </table>
-        <%= link_to "注文履歴一覧を見る", orders_path, class: "btn btn-info" %>
+        </div>
+        </div>
+
+            <div class="row-md-12">
+        <div class="col-md-6">
+              <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %>
+             <div class="col-md-6">
+               <%= link_to "注文履歴一覧を見る", orders_path, class: "btn btn-info" %>
+          </div>
+        </div>
       </div>
+
     </div>
+  </div>
   </div>

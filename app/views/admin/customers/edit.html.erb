@@ -1,9 +1,11 @@
+<br>
+<br>
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
 
 <h3><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h3>
-
+<br>
 <div class="row">
     <div class="col-md-4">
       <p>会員ID</p>
@@ -58,7 +60,7 @@
     </div>
     <div class="col-md-8 mb-3">
       <div class="field">
-        <%= f.text_field :address %>
+        <%= f.text_field :address, size: "50" %>
       </div>
     </div>
   </div>
@@ -98,10 +100,10 @@
       </div>
     </div>
   </div>
-
+<br>
   <div class="row">
-    <div class="col-md-4">
-      <div class="col-md-8 mb-3">
+    <div class="col-md-8">
+      <div class="col-md-4 mb-3">
         <%= f.submit "変更内容を保存", class: "btn btn-success" %>
       </div>
     </div>
@@ -110,3 +112,5 @@
   </div>
   </div>
 </div>
+<br>
+<br>

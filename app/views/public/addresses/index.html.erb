@@ -1,8 +1,18 @@
+<br>
+<br>
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
-      <h3>配送先登録/一覧</h3>
+    <div class="col-12 mx-auto">
+
+      <div class="row">
+        <div class="col-md-3">
+          <h4 style="background-color:#C2EEFF">　　配送先登録/一覧　</h4>
+        </div>
+      </div>
+      <br>
+
         <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
+
         <div class="row">
           <div class="col-md-4">
             <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
@@ -13,16 +23,18 @@
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-4">
             <%= f.label :address, "住所" %>
           </div>
           <div class="col-md-8 mb-3">
             <div class="field">
-              <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+              <%= f.text_field :address, size: "50", placeholder: "東京都渋谷区代々木神園町0-0" %>
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-4">
             <%= f.label :name, "宛名" %>
@@ -35,11 +47,12 @@
         </div>
 
         <div class="row">
-          <div class="col-md-4"></div>
-            <div class="col-md-8 mb-3 mt-3">
-              <%= f.submit "新規登録", class: "btn btn-success" %>
+          <div class="col-md-8"></div>
+            <div class="col-md-4 mb-3 mt-3">
+              <%= f.submit "新規登録", class: "btn btn-success w-25" %>
             </div>
         </div>
+
       <% end %>
 
         <div class="row">
@@ -59,15 +72,17 @@
                   <td><%= address.post_code %></td>
                   <td><%= address.address %></td>
                   <td><%= address.name %></td>
-                  <td><%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
+                  <td style="width: 25%"><%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
                       <%= link_to "削除する", address_path(address), method: :delete, class: "btn btn-danger" %>
                   </td>
                 </tr>
                 <% end %>
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
-</div>
+<br>
+<br>
