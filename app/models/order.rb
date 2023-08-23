@@ -14,4 +14,6 @@ class Order < ApplicationRecord
     self.postage + self.total_price
   end
   
+  
+  
 end
