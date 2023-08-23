@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0">
       <h2>注文履歴詳細</h2>
-      <table>
+      <table class="table">
         <tbody>
           <tr>
             <th><strong>購入者</strong></th>
-            <th><%= @order.customer.name %></th>
+            <th><%= @order.customer.full_name %></th>
           </tr>
           <tr>
             <th><strong>注文日</strong></th>
@@ -24,7 +24,7 @@
             <th><strong>注文ステータス</strong></th>
             <th>
               <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-                <%= f.collection_select :status, Order.statuses.keys, :status, Order.statuses_i18n, {selected: @order.status}%>
+                <%= f.select :status, Order.statuses_i18n.invert, selected: @order.status %>
                 <%= f.submit '更新', class:'btn btn-success' %>
               <% end %>
             </th>
@@ -35,7 +35,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0">
-      <table>
+      <table class="table">
         <thread>
           <tr>
             <th><strong>商品名</strong></th>
@@ -46,7 +46,7 @@
           </tr>
         </thread>
         <tbody>
-          <%= @order_items.each do |order_item| %>
+          <% @order_items.each do |order_item| %>
             <tr>
               <th><%= order_item.item.name %></th>
               <th><%= order_item.price%></th>
@@ -54,7 +54,7 @@
               <th><%= order_item.price * order_item.quantity %></th>
               <th>
                 <%= form_with model: order_item, url: admin_order_order_item_path(@order.id, order_item.id) do |f| %>
-                  <%= f.collection_select :making_status, OrderItem.making_statuses.keys, :making_status, OrderItem.making_statuses_i18n, {selected: order_item.making_status}%>
+                  <%= f.select :making_status, OrderItem.making_statuses_i18n.invert, selected: order_item.making_status%>
                   <%= f.submit '更新', class:'btn btn-success' %>
                 <% end %>
               </th>
@@ -64,9 +64,20 @@
       </table>
     </div>
     <div class="col-sm-12 col-md-4 col-lg-4 px-sm-0">
-      <strong>商品合計　</strong><%= @order.total_price.to_s + '円' %>
-      <strong>送料　</strong><%= @order.postage.to_s + '円' %>
-      <strong>請求金額合計　<%= @order.order_price.to_s %>円</strong>
+      <table class="table">
+        <tr>
+          <th>商品合計</th>
+          <td><%= @order.total_price.to_s + '円' %></td>
+        </tr>
+        <tr>
+          <th>送料</th>
+          <td><%= @order.postage.to_s + '円' %></td>
+        </tr>
+        <tr>
+          <th>請求金額合計</th>
+          <th><%= @order.order_price.to_s %>円</th>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
