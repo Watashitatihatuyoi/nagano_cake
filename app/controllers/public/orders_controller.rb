@@ -39,8 +39,10 @@ class Public::OrdersController < ApplicationController
         order_item.price = cart_item.item.price*1.1
         order_item.save
       end
-      redirect_to complete_orders_path
+      address = Address.new(new_address_params)
+      address.save
       cart_items.destroy_all
+      redirect_to complete_orders_path
     else
       @order = Order.new(order_params)
       render :new
@@ -65,6 +67,10 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:payment_method, :post_code, :address, :name, :status, :customer_id, :postage, :total_price)
+  end
+  
+  def new_address_params
+    params.require(:order).permit(:post_code, :address, :name, :customer_id)
   end
 
 end
