@@ -2,7 +2,7 @@ class Public::HomesController < ApplicationController
   
   def top
     @items = Item.all
-    @new_items = Item.first(4)
+    @new_items = Item.last(4)
   end
   
   def about
