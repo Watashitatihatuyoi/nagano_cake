@@ -18,7 +18,7 @@
       <div class="container">
         <div class="row">
           <ul class="mx-auto">
-            <% @items.each do |item| %>
+            <% @new_items.each do |item| %>
               <p class="img"><%= image_tag item.item_image, size: '400x200' %></p>
               <p><%= item.name %></p>
               <p>¥<%= item.price.to_s %></p>
