@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_select] == 'own_address'
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
-      @order.name = current_customer.name
+      @order.name = current_customer.full_name
     elsif params[:order][:address_select] == 'registered_address'
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
@@ -20,16 +20,16 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
     end
     @cart_items = current_customer.cart_items.all
+    total_price = 0
+    @cart_items.each do |cart_item|
+      total_price = total_price + cart_item.item.price
+    end
+    @order.total_price = (total_price*1.1).floor
   end
 
   def create
     cart_items = current_customer.cart_items.all
-    @order = current_customer.orders.new(order_params)
-    total_price = 0
-    cart_items.each do |cart_item|
-      total_price = total_price + cart_item.item.price
-    end
-    @order.total_price = total_price*1.1
+    @order = Order.new(order_params)
     if @order.save
       cart_items.each do |cart_item|
         order_item = OrderItem.new
@@ -39,8 +39,10 @@ class Public::OrdersController < ApplicationController
         order_item.price = cart_item.item.price*1.1
         order_item.save
       end
-      redirect_to complete_orders_path
+      address = Address.new(new_address_params)
+      address.save
       cart_items.destroy_all
+      redirect_to complete_orders_path
     else
       @order = Order.new(order_params)
       render :new
@@ -64,7 +66,11 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require[:order].permit[:payment_method, :post_code, :address, :name]
+    params.require(:order).permit(:payment_method, :post_code, :address, :name, :status, :customer_id, :postage, :total_price)
+  end
+  
+  def new_address_params
+    params.require(:order).permit(:post_code, :address, :name, :customer_id)
   end
 
 end

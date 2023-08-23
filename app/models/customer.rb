@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :addresses
   has_many :orders
   has_many :cart_items
-  
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
@@ -15,11 +15,15 @@ class Customer < ApplicationRecord
   validates :post_code, presence: true, length: { is: 7 }
   validates :address, presence: true
   validates :phone_number, presence: true, length: {maximum: 11, minimum: 10}
-  
+
 
 
   def own_adress_display
-    '〒'+self.post_code+''+self.address
+    "〒#{post_code} #{address}"
+  end
+  
+  def full_name
+    "#{last_name}#{first_name}"
   end
 
 

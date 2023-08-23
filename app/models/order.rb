@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   enum status: {waiting_for_payment: 0, confirmed_payment: 1, making: 2, shipping_preparation: 3, shipped: 4}
   
   def order_address_display
-    '〒' + self.postal_code + ' ' + self.address 
+    "〒#{post_code} #{address}"
   end
   
   def order_price
