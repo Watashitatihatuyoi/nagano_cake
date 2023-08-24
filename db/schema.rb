@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2023_08_17_091926) do
     t.integer "post_code", null: false
     t.string "address", null: false
     t.integer "phone_number", null: false
-    t.boolean "is_admission", default: false, null: false
+    t.boolean "is_admission", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
