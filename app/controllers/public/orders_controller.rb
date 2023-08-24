@@ -25,6 +25,13 @@ class Public::OrdersController < ApplicationController
       total_price = total_price + cart_item.item.price
     end
     @order.total_price = (total_price*1.1).floor
+    session[:order] = @order
+    redirect_to check_orders_path
+  end
+  
+  def check
+    @order = Order.new(session[:order])
+    @cart_items = current_customer.cart_items.all
   end
 
   def create
@@ -42,6 +49,7 @@ class Public::OrdersController < ApplicationController
       address = Address.new(new_address_params)
       address.save
       cart_items.destroy_all
+      session.delete(:order)
       redirect_to complete_orders_path
     else
       @order = Order.new(order_params)
@@ -50,7 +58,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-
+    
   end
 
 
