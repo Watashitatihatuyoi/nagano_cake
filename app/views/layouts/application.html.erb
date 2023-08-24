@@ -17,6 +17,7 @@
           <div class="logo">
              <%= link_to root_path, class:'navbar-brand' do %><%= image_tag 'logo.png', :size => '250x200' %><% end %>
           </div>
+          <%= flash[:notice] %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

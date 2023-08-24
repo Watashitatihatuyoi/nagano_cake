@@ -6,8 +6,9 @@ class Public::SessionsController < Devise::SessionsController
 
   
   def after_sign_in_path_for(resource)
-  flash[:notice] = "ログインが正常に行われました。"
-  root_path
+    @customer = current_customer
+    flash[:notice] = "ようこそ、#{@customer.full_name}さん！"
+    root_path
   end
 
   # GET /resource/sign_in
