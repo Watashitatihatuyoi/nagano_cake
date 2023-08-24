@@ -4,10 +4,13 @@ class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_customer, only: [:create]
 
+  
   def after_sign_in_path_for(resource)
+    @customer = current_customer
+    flash[:notice] = "ようこそ、#{@customer.full_name}さん！"
     root_path
   end
-  
+
   # GET /resource/sign_in
   # def new
   #   super

@@ -4,7 +4,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  
   def after_sign_up_path_for(resource)
+    @customer = current_customer
+    flash[:notice] = "ようこそ、#{@customer.full_name}さん！"
     customers_my_page_path
   end
 
@@ -73,4 +76,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number, :is_admission])
   end
 end
+
+ 
+
 
