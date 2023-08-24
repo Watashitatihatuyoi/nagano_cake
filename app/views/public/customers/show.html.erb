@@ -1,60 +1,74 @@
 
-
-
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-12 mx-auto">
     <br>
     <br>
-      <h3>マイページ</h3>
+      <div class="row">
+        <div class="col-md-2">
+          <h4 style="background-color:#C2EEFF">　マイページ　</h4>
+        </div>
+      </div>
       <br>
-        <table class="table table-bordered">
-          <strong>登録情報</strong>　　　<%= link_to"編集する",customers_information_edit_path, class: "btn btn-success" %>
-          <br>
-          <tr>
-            <td style="width: 30%">氏名</td>
-            <td style="width: 70%"><%= @customer.last_name + @customer.first_name %></td>
-          </tr>
-          <tr>
-            <td style="width: 30%">カナ</td>
-            <td style="width: 70%"><%= @customer.last_name_kana + @customer.first_name_kana %></td>
-          </tr>
-          <tr>
-            <td style="width: 30%">郵便番号</td>
-            <td style="width: 70%"><%= @customer.post_code %></td>
-          </tr>
-          <tr>
-            <td style="width: 30%">住所</td>
-            <td style="width: 70%"><%= @customer.address %></td>
-          </tr>
-          <tr>
-            <td style="width: 30%">電話番号</td>
-            <td style="width: 70%"><%= @customer.phone_number %></td>
-          </tr>
-          <tr>
-            <td style="width: 30%">メールアドレス</td>
-            <td style="width: 70%"><%= @customer.email %></td>
-          </tr>
-        </table>
+      <div class="row">
+        <div class="col-md-3">
+          <strong>登録情報</strong>
+        </div>
+        <div class="col-md-3 mb-3">
+          <%= link_to"編集する",customers_information_edit_path, class: "btn btn-success" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <table class="table table-bordered">
+            <tr>
+              <td style="width: 30%">氏名</td>
+              <td style="width: 70%"><%= @customer.last_name + @customer.first_name %></td>
+            </tr>
+            <tr>
+              <td style="width: 30%">カナ</td>
+              <td style="width: 70%"><%= @customer.last_name_kana + @customer.first_name_kana %></td>
+            </tr>
+            <tr>
+              <td style="width: 30%">郵便番号</td>
+              <td style="width: 70%"><%= @customer.post_code %></td>
+            </tr>
+            <tr>
+              <td style="width: 30%">住所</td>
+              <td style="width: 70%"><%= @customer.address %></td>
+            </tr>
+            <tr>
+              <td style="width: 30%">電話番号</td>
+              <td style="width: 70%"><%= @customer.phone_number %></td>
+            </tr>
+            <tr>
+              <td style="width: 30%">メールアドレス</td>
+              <td style="width: 70%"><%= @customer.email %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <br>
+
+      <div class="row">
+        <div class="col-md-2">
+          <strong>配送先</strong>
+        </div>
+        <div class="col-md-2">
+          <%= link_to "一覧を見る",addresses_path, class: "btn btn-info" %>
+        </div>
+        <div class="col-md-2">
+          <strong>注文履歴</strong>
+        </div>
+        <div class="col-md-3">
+          <%= link_to "一覧を見る",orders_path, class: "btn btn-info" %>
+        </div>
+      </div>
+
     </div>
   </div>
-    <div class="row">
-      <div class="col-md-1">
-        <strong>配送先</strong>
-      </div>
-      <div class="col-md-3">
-        <%= link_to "一覧を見る",addresses_path, class: "btn btn-info" %>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-1">
-        <strong>注文履歴</strong>
-      </div>
-      <div class="col-md-3">
-        <%= link_to "一覧を見る",orders_path, class: "btn btn-info" %>
-      </div>
-    </div>
 </div>
+<br>
 <br>
 <br>

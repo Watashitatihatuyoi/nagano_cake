@@ -21,15 +21,12 @@ class Customer < ApplicationRecord
   def own_adress_display
     "〒#{post_code} #{address}"
   end
-  
+
   def full_name
     "#{last_name}#{first_name}"
   end
 
 
-  def active_for_authentication?
-    super && (is_admission == false)
-  end
 
 
 

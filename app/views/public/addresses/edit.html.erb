@@ -1,7 +1,16 @@
+<br>
+<br>
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
-      <h3>配送先編集</h3>
+    <div class="col-12 mx-auto">
+
+      <div class="row">
+        <div class="col-md-2">
+          <h4 style="background-color:#C2EEFF">　配送先編集　 </h4>
+        </div>
+      </div>
+      <br>
+
         <%= form_with model: @address, url: address_path, method: :patch do |f| %>
         <div class="row">
           <div class="col-md-4">
@@ -13,16 +22,18 @@
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-4">
             <%= f.label :address, "住所" %>
           </div>
           <div class="col-md-8 mb-3">
             <div class="field">
-              <%= f.text_field :address %>
+              <%= f.text_field :address, size: "50" %>
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-md-4">
             <%= f.label :name, "宛名" %>
@@ -44,3 +55,6 @@
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>

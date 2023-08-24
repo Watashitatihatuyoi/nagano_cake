@@ -1,9 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12 mx-auto">
     <br>
     <br>
-    <h3>会員一覧</h3>
+    <div class="row">
+          <div class="col-2">
+            <h4 style="background-color:#DCDCDC">　会員一覧　　</h4>
+          </div>
+        </div>
     <br>
     <table class="table">
       <thead class="thead-light">
@@ -25,17 +29,18 @@
                                    <% end %></td>
           <td style="height: 60px"><%= customer.email %></td>
           <td style="height: 60px"><% if customer.is_admission == true %>
-                                　    <strong class="text-secondary">退会</strong>
-                                   <% elsif customer.is_admission == false %>
-                                     <strong class="text-success">有効</strong>
-                                   <% end %></td>
+                                    <strong class="text-secondary">退会</strong>
+                                    <% elsif customer.is_admission == false %>
+                                    <strong class="text-success">有効</strong>
+                                    <% end %></td>
         </tr>
       </tbody>
       <% end %>
     </table>
     <br>
-    <br>
       <%= paginate @customers %>
     </div>
   </div>
 </div>
+<br>
+<br>
