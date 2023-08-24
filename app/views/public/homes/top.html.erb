@@ -24,15 +24,15 @@
       <h1>新着商品</h1>
       <div class="container">
         <div class="row">
-          <ul class="mx-auto">
-            <% @new_items.each do |item| %>
+          <% @new_items.each do |item| %>
+            <div class="col-sm-12 col-md-2 col-lg-3">
               <%= link_to item_path(item) do %>
-                <p class="img"><%= image_tag item.item_image, size: '400x200' %></p>
+              <p class="img"><%= image_tag item.item_image, size: '250x150' %></p>
               <% end %>
               <p><%= item.name %></p>
               <p>¥<%= item.price.to_s %></p>
-            <% end %>
-          </ul>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="text-right">
