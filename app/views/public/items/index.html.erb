@@ -4,11 +4,11 @@
       <br>
       <%= render "genre", genre: @genres %>
     </div>
-      
+
       <div class="col-md-8 offset-md-1">
         <h2>商品一覧（全<%= @total_items %>件）</h2>
         <div class="row">
-          
+
           <% @items.each do |item| %>
             <div class="col-md-6">
               <div class="card-deck">

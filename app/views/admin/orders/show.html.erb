@@ -54,7 +54,7 @@
               <th><%= order_item.price * order_item.quantity %></th>
               <th>
                 <%= form_with model: order_item, url: admin_order_order_item_path(@order.id, order_item.id) do |f| %>
-                  <%= f.select :making_status, OrderItem.making_statuses_i18n.invert, selected: order_item.making_status%>
+                  <%= f.select :making_status, OrderItem.making_statuses_i18n.invert, selected: order_item.making_status %>
                   <%= f.submit '更新', class:'btn btn-success' %>
                 <% end %>
               </th>
