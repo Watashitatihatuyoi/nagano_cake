@@ -16,8 +16,7 @@
             <%= f.radio_button :address_select, 'own_address' %>
             <strong><%= f.label :address_select_own_address, 'ご自身の住所' %></strong><br>
             <div class="pl-3">
-              <%= current_customer.own_adress_display %>
-              <%= current_customer.full_name %>
+              <h6><%= current_customer.own_adress_display %>　<%= current_customer.full_name %></h6>
             </div>
           </div>
           <div class="mb-3">
