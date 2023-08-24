@@ -18,6 +18,8 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
     elsif params[:order][:address_select] == 'new_address'
       @order = Order.new(order_params)
+      address = Address.new(new_address_params)
+      session[:address] = address
     end
     @cart_items = current_customer.cart_items.all
     total_price = 0
@@ -25,28 +27,35 @@ class Public::OrdersController < ApplicationController
       total_price = total_price + cart_item.item.price
     end
     @order.total_price = (total_price*1.1).floor
+    session[:order] = @order
+    redirect_to check_orders_path
+  end
+  
+  def check
+    @order = Order.new(session[:order])
+    @cart_items = current_customer.cart_items.all
   end
 
   def create
     cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
-    if @order.save
-      cart_items.each do |cart_item|
-        order_item = OrderItem.new
-        order_item.order_id = @order.id
-        order_item.item_id = cart_item.item.id
-        order_item.quantity = cart_item.quantity
-        order_item.price = cart_item.item.price*1.1
-        order_item.save
-      end
-      address = Address.new(new_address_params)
-      address.save
-      cart_items.destroy_all
-      redirect_to complete_orders_path
-    else
-      @order = Order.new(order_params)
-      render :new
+    @order.save
+    cart_items.each do |cart_item|
+      order_item = OrderItem.new
+      order_item.order_id = @order.id
+      order_item.item_id = cart_item.item.id
+      order_item.quantity = cart_item.quantity
+      order_item.price = cart_item.item.price*1.1
+      order_item.save
     end
+    if session[:address]
+      address = Address.new(session[:address])
+      address.save
+    end
+    session.delete(:order)
+    session.delete(:address)
+    cart_items.destroy_all
+    redirect_to complete_orders_path
   end
 
   def complete
