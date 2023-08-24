@@ -7,7 +7,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   def after_sign_up_path_for(resource)
     @customer = current_customer
-    flash[:notice] = "ようこそ、#{@customer.full_name}さん！"
+    flash[:notice] = "ようこそ、#{@customer.last_name}さん！"
     customers_my_page_path
   end
 

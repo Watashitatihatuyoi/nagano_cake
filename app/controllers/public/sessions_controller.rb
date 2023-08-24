@@ -7,7 +7,7 @@ class Public::SessionsController < Devise::SessionsController
   
   def after_sign_in_path_for(resource)
     @customer = current_customer
-    flash[:notice] = "ようこそ、#{@customer.full_name}さん！"
+    flash[:notice] = "ようこそ、#{@customer.last_name}さん！"
     root_path
   end
 
