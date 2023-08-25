@@ -13,8 +13,12 @@ class Admin::ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admin_item_path(@item)
+    if @item.save
+      redirect_to admin_item_path(@item)
+    else
+      @genres = Genre.pluck(:name, :id)
+      render new_admin_item_path
+    end
   end 
   
   def show

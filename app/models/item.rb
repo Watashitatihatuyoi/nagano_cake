@@ -12,6 +12,9 @@ class Item < ApplicationRecord
       "販売停止中"
     end
   end
+  
+  validates :item_image, :name, :explanation, :genre_id, :price, presence: true
+  validates :is_active, inclusion: { in: [true, false] }
 
   def with_tax_price
     (price * 1.1).floor
