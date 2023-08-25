@@ -19,6 +19,11 @@
                   <div class="card-body">
                     <h5 class="card-title"><%= item.name %></h5>
                     <p class="card-text">¥<%= item.with_tax_price.to_s(:delimited) %></p>
+                    <% if item.is_active == true %>
+                      <p class="text-success">販売中</p>
+                    <% else %>
+                      <p class="text-danger">販売停止中です</p>
+                    <% end %>
                   </div>
                 </div>
               </div>

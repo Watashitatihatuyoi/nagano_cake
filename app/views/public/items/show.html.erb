@@ -20,19 +20,18 @@
           <% else %>
             <p class="text-danger">販売停止中です</p>
           <% end %>
-          
-          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-           <%= f.select :quantity, 1..10 %>
-          
-            <% if customer_signed_in? %>
+          <% if customer_signed_in? %>
+            <% if @item.is_active == true %>
+              <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+              <%= f.select :quantity, 1..10 %>
               <%= f.submit "カートに入れる", class: "btn", style:"background-color: #64CCC5; color: white; mx-3" %>
               <%= f.hidden_field :customer_id, value: current_customer.id %>
               <%= f.hidden_field :item_id, value: @item.id %>
-            <% else %>
-              <p>カートに入れるには<a href="<%= new_customer_session_path %>">ログイン</a>が必要です。</p>
+              <% end %>
             <% end %>
+          <% else %>
+            <p>カートに入れるには<a href="<%= new_customer_session_path %>">ログイン</a>が必要です。</p>
           <% end %>
-          
         </div>
       </div>
     </div>
