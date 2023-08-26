@@ -1,0 +1,18 @@
+<!-- ジャンル検索　部分テンプレート化 -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ジャンル検索</th>
+    </tr>
+  </thead>
+        
+  <tbody>
+    <% @genres.each do |genre| %>
+    <tr>
+      <td><%= link_to genre.name, genre_path(genre), class: "link" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+        
+</table>
